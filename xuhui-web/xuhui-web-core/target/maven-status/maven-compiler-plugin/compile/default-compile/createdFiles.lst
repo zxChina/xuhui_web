@@ -1,0 +1,5 @@
+com\xuhui\wb\user\dao\impl\UserDaoImpl.class
+com\xuhui\wb\dao\MysqlServerDao.class
+com\xuhui\wb\model\base\BaseDO.class
+com\xuhui\wb\model\UserDO.class
+com\xuhui\wb\user\dao\UserDao.class

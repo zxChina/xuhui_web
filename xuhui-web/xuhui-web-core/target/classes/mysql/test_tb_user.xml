@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test_tb_user">
+
+	<sql id="base_column">
+		id,name,age,phone
+	</sql>
+	<select id="getUserList" parameterType="java.util.Map" resultType="com.xuhui.wb.model.UserDO">
+		select
+		<include refid="base_column"/>
+		from test.tb_user
+	</select>
+	
+	<update id="updateUser" parameterType="com.xuhui.wb.model.UserDO">
+		update test.tb_user set name= #{name},age=#{age},phone=#{phone}
+		where 
+		<if test="id != null and id=''">
+			id = #{id}
+		</if>
+	</update>
+	
+	<!-- 返回主键id -->
+	<insert id="saveUser" parameterType="com.xuhui.wb.model.UserDO" 
+		useGeneratedKeys="true" keyProperty="id">
+		insert into test.tb_user (name,age,phone)	
+		values(#{name},#{age},#{phone})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="java.util.Map">
+		delete from test.tb_user where id = #{id}
+	</delete>
+	
+</mapper>
